@@ -1,0 +1,32 @@
+.all__recipes {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 300px);
+  grid-gap: 20px;
+}
+
+.recipe__card {
+  padding: 10px;
+}
+
+.recipe__image_container {
+  background-color: rgb(220, 218, 218);
+  height: 200px;
+  width: 300px;
+  border-radius: 15px;
+}
+
+.recipe__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.recipe__title {
+  margin-top: 10px;
+}
+
+.recipe__chef {
+  margin-top: 10px;
+}
