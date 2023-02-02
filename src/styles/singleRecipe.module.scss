@@ -1,0 +1,25 @@
+.one__recipe_main {
+  padding: 0 40px;
+}
+.recipe__image {
+  width: 100%;
+  min-height: 240px;
+  object-fit: contain;
+}
+
+.recipe__title {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.ingredientsWrapper {
+  margin-top: 25px;
+}
+
+.ingredients {
+  margin-top: 10px;
+}
+
+.ingredient {
+  margin-bottom: 5px;
+}

@@ -5,7 +5,7 @@ import React from "react";
 import styles from "../../styles/singleRecipe.module.scss";
 
 const OneRecipe = ({ recipe }) => {
-  console.log(recipe, "recipe...");
+  if (!recipe) return <>Loading...</>;
   return (
     <div className={styles.one__recipe_main}>
       <Head>
@@ -22,6 +22,20 @@ const OneRecipe = ({ recipe }) => {
           ></Image>
         </div>
         <h2 className={styles.recipe__title}>{recipe.name}</h2>
+        <h2 className={styles.recipe__title}>👩🏻‍🍳 Chef : {recipe.chef.name}</h2>
+      </section>
+      <section className={styles.ingredientsWrapper}>
+        <h4>Ingredients</h4>
+        <ul className={styles.ingredients}>
+          {recipe.ingredients.map((ingredient, key) => {
+            return (
+              <li className={styles.ingredient} key={key}>
+                {ingredient.ingredient.name} {ingredient.quantity}{" "}
+                {ingredient.unit}
+              </li>
+            );
+          })}
+        </ul>
       </section>
     </div>
   );
