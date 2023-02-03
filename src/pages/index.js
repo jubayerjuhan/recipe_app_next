@@ -20,7 +20,7 @@ export default function Home({ recipes }) {
         className="recipe_hero-section"
         style={{ padding: 40, display: "flex", justifyContent: "center" }}
       >
-        <h2>All Recipes</h2>
+        <h2 className={styles.mainTitle}>All Recipes</h2>
       </section>
 
       <section className={styles.all__recipes}>
@@ -32,9 +32,7 @@ export default function Home({ recipes }) {
               className={styles.link}
             >
               <>
-                <RecipeCard recipe={recipe} />
-                <RecipeCard recipe={recipe} />
-                <RecipeCard recipe={recipe} />
+                <RecipeCard recipe={recipe} delay={key * 100} />
               </>
             </Link>
           );

@@ -1,3 +1,22 @@
+/*  */
+
+@font-face {
+  font-family: "My Font Bold";
+  src: url("../assets/fonts/test-calibre-semibold.woff2") format("woff2");
+}
+
+.mainTitle {
+  font-family: "My Font Bold";
+  font-weight: 600;
+  font-size: clamp(40px, 8vw, 80px);
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+
 .all__recipes {
   padding: 20px;
   display: grid;
