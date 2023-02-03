@@ -9,6 +9,11 @@
   padding: 10px;
 }
 
+.link {
+  text-decoration: none;
+  color: black;
+}
+
 .recipe__image_container {
   background-color: rgb(220, 218, 218);
   height: 200px;
@@ -25,8 +30,21 @@
 
 .recipe__title {
   margin-top: 10px;
+  text-decoration: none;
 }
 
 .recipe__chef {
   margin-top: 10px;
+}
+
+.show {
+  transition: all 600ms ease-in-out;
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+.hide {
+  transform: translateY(50px);
+  transition: all 600ms ease-in-out;
+  opacity: 0;
 }

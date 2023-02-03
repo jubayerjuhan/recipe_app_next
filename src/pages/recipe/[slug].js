@@ -2,10 +2,13 @@ import { sanityClient, urlBuilder } from "lib/sanity.js";
 import Head from "next/head.js";
 import Image from "next/image.js";
 import React from "react";
+import { PortableText } from "@portabletext/react";
 import styles from "../../styles/singleRecipe.module.scss";
+import LikeButton from "@/components/LikeButton/LikeButton.jsx";
 
 const OneRecipe = ({ recipe }) => {
   if (!recipe) return <>Loading...</>;
+  console.log(recipe, "recipe");
   return (
     <div className={styles.one__recipe_main}>
       <Head>
@@ -24,18 +27,25 @@ const OneRecipe = ({ recipe }) => {
         <h2 className={styles.recipe__title}>{recipe.name}</h2>
         <h2 className={styles.recipe__title}>👩🏻‍🍳 Chef : {recipe.chef.name}</h2>
       </section>
+      <section>
+        <LikeButton likes={recipe?.likes} id={recipe?._id} />
+      </section>
       <section className={styles.ingredientsWrapper}>
         <h4>Ingredients</h4>
         <ul className={styles.ingredients}>
           {recipe.ingredients.map((ingredient, key) => {
             return (
               <li className={styles.ingredient} key={key}>
-                {ingredient.ingredient.name} {ingredient.quantity}{" "}
-                {ingredient.unit}
+                {`${ingredient.ingredient.name} ${ingredient.quantity}
+                ${ingredient.unit}`}
               </li>
             );
           })}
         </ul>
+      </section>
+      <section className={styles.instructions}>
+        <h4 className={styles.instructions__title}>Instructions</h4>
+        <PortableText value={recipe.instructions} />
       </section>
     </div>
   );
@@ -68,6 +78,8 @@ export const getStaticProps = async ({ params }) => {
     name,
     slug,
     image,
+    likes,
+    instructions,
     chef -> {
       name,
       image

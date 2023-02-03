@@ -3,6 +3,8 @@ import Image from "next/image";
 import { sanityClient, urlBuilder } from "lib/sanity.js";
 import styles from "../styles/index.module.css";
 import Link from "next/link.js";
+import { useInView } from "react-intersection-observer";
+import { RecipeCard } from "@/components/RecipeCard/RecipeCard.jsx";
 
 export default function Home({ recipes }) {
   return (
@@ -22,23 +24,21 @@ export default function Home({ recipes }) {
       </section>
 
       <section className={styles.all__recipes}>
-        {recipes.map((recipe, key) => (
-          <Link key={key} href={`/recipe/${recipe.slug.current}`}>
-            <div className={styles.recipe__card}>
-              <div className={styles.recipe__image_container}>
-                <Image
-                  className={styles.recipe__image}
-                  src={urlBuilder(recipe.image).url()}
-                  width={100}
-                  height={100}
-                  alt={recipe.name}
-                ></Image>
-              </div>
-              <p className={styles.recipe__title}>{recipe.name}</p>
-              <p className={styles.recipe__chef}>👩🏻‍🍳 {recipe.chef?.name}</p>
-            </div>
-          </Link>
-        ))}
+        {recipes.map((recipe, key) => {
+          return (
+            <Link
+              key={key}
+              href={`/recipe/${recipe.slug.current}`}
+              className={styles.link}
+            >
+              <>
+                <RecipeCard recipe={recipe} />
+                <RecipeCard recipe={recipe} />
+                <RecipeCard recipe={recipe} />
+              </>
+            </Link>
+          );
+        })}
       </section>
     </div>
   );
