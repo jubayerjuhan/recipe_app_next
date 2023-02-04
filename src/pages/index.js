@@ -7,6 +7,7 @@ import { useInView } from "react-intersection-observer";
 import { RecipeCard } from "@/components/RecipeCard/RecipeCard.jsx";
 
 export default function Home({ recipes }) {
+  console.log(process.env.NEXT_PUBLIC_SANITY_TOKEN);
   return (
     <div>
       <Head>
