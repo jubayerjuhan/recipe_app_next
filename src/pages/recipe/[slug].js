@@ -1,7 +1,7 @@
 import { sanityClient, urlBuilder } from "lib/sanity.js";
 import Head from "next/head.js";
 import Image from "next/image.js";
-import React from "react";
+import React, { useEffect } from "react";
 import { PortableText } from "@portabletext/react";
 import styles from "../../styles/singleRecipe.module.scss";
 import LikeButton from "@/components/LikeButton/LikeButton.jsx";
@@ -9,6 +9,7 @@ import LikeButton from "@/components/LikeButton/LikeButton.jsx";
 const OneRecipe = ({ recipe }) => {
   if (!recipe) return <>Loading...</>;
   console.log(recipe, "recipe");
+
   return (
     <div className={styles.one__recipe_main}>
       <Head>
@@ -28,7 +29,7 @@ const OneRecipe = ({ recipe }) => {
         <h2 className={styles.recipe__title}>👩🏻‍🍳 Chef : {recipe.chef.name}</h2>
       </section>
       <section>
-        <LikeButton likes={recipe?.likes} id={recipe?._id} />
+        <LikeButton id={recipe?._id} likes={recipe?.likes} />
       </section>
       <section className={styles.ingredientsWrapper}>
         <h4>Ingredients</h4>

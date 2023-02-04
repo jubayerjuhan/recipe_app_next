@@ -1,11 +1,15 @@
 import { sanityClient } from "lib/sanity.js";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BounceLoader } from "react-spinners";
 
 const LikeButton = ({ likes: documentLikes, id }) => {
   const [likes, setLikes] = useState(documentLikes);
   const [loading, setLoading] = useState(false);
   console.log(id, "Sanity Token");
+
+  useEffect(() => {
+    getLikesCount(id).then((data) => setLikes(data.likes));
+  }, [id]);
 
   const handleClick = async () => {
     setLoading(true);
@@ -32,3 +36,13 @@ const LikeButton = ({ likes: documentLikes, id }) => {
 };
 
 export default LikeButton;
+
+export const getLikesCount = async (id) => {
+  const data = await sanityClient.fetch(
+    `*[_type == "recipe" && _id == $slug ][0]{
+      likes
+    }`,
+    { slug: id }
+  );
+  return data;
+};
